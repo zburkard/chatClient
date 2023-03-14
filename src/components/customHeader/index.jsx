@@ -8,9 +8,11 @@ const CustomHeader = ({chat}) => {
         <ChatBubbleLeftRightIcon className="icon-chat"/>
         <h3 className="header-text">{chat.title}</h3>
       </div>
-      <div>
+      <div className="flexbetween">
         <PhoneIcon className="icon-phone"/>
-        <p className="header-text">{chat.description}</p>
+        {chat.description !== "⬅️ ⬅️ ⬅️" ? (<p className="header-text">{chat.description}</p>) :
+        (<p className="header-text">No Chat Selected</p>)}
+        
       </div>
     </div>
   )
