@@ -1,10 +1,10 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
-  baseQuery: fetchBaseQuery({baseUrl: import.meta.env.VITE_BASE_URL}),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
   reducerPath: "main",
   tagTypes: [],
-  endpoints: (build)=> ({
+  endpoints: (build) => ({
     postAiText: build.mutation({
       query: (payload) => ({
         url: "openai/text",
@@ -26,7 +26,27 @@ export const api = createApi({
         body: payload,
       }),
     }),
+    postLogin: build.mutation({
+      query: (payload) => ({
+        url: "auth/login",
+        method: "POST",
+        body: payload,
+      }),
+    }),
+    postSignUp: build.mutation({
+      query: (payload) => ({
+        url: "auth/signup",
+        method: "POST",
+        body: payload,
+      }),
+    }),
   }),
 });
 
-export const {usePostAiTextMutation, usePostAiCodeMutation, usePostAiAssistMutation} = api;
+export const {
+  usePostAiTextMutation,
+  usePostAiCodeMutation,
+  usePostAiAssistMutation,
+  usePostLoginMutation,
+  usePostSignUpMutation,
+} = api;
